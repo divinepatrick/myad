@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
     "express": "^4.18.2",
+    "mongodb": "^6.12.0",
+    "mongoose": "^8.9.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.4.0",
