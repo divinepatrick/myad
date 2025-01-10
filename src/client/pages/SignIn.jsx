@@ -36,7 +36,7 @@ const SignIn = () => {
         return;
       }
 
-      dispatch(signInSuccess(data.user));
+      dispatch(signInSuccess(data));
       navigate("/");
 
     } catch (error) {
