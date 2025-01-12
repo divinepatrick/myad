@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        avatar: {
+            type: String,
+            default: "https://tse1.explicit.bing.net/th?id=OIP.audMX4ZGbvT2_GJTx2c4GgHaHw&rs=1&pid=ImgDetMain",
+        },
     },
     { timestamps: true }
 );
