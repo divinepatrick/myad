@@ -2,6 +2,7 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import logo from "../assets/images/logo.png";
 
 const Header = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -10,10 +11,11 @@ const Header = () => {
     <header className="bg-white shadow-sm">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-4">
         <Link to="/">
-          <h1 className="font-bold text-xl flex flex-wrap">
-            <span className="text-blue-500">My</span>
-            <span className="text-gray-800">ad</span>
-          </h1>
+          <img
+            src={logo}
+            alt="Myad Logo"
+            className="h-20 w-auto"
+          />
         </Link>
         <form className="bg-gray-100 p-2 rounded-full flex items-center">
           <input

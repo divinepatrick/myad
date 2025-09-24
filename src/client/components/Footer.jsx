@@ -1,6 +1,7 @@
 import React from "react";
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import logo from "../assets/images/logo.png";
 
 const Footer = () => {
   return (
@@ -9,10 +10,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Brand Logo */}
           <Link to="/" className="mb-4 md:mb-0">
-            <h1 className="font-bold text-xl">
-              <span className="text-blue-500">My</span>
-              <span className="text-gray-800">ad</span>
-            </h1>
+            <img src={logo} alt="Myad Logo" className="h-20 w-auto" />
           </Link>
 
           {/* Navigation Links */}

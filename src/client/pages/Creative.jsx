@@ -5,16 +5,19 @@ const CreativeGenerator = () => {
   const [generatedAd, setGeneratedAd] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // input changes and update formData state
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
+  // API request
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setGeneratedAd('');
+    e.preventDefault(); // Prevent page refresh on form submission
+    setLoading(true); // Set loading state to true
+    setGeneratedAd(''); // Clear previous generated ad content
 
     try {
+      // Sending data to backend API for ad generation
       const response = await fetch('/api/generate-ad', {
         method: 'POST',
         headers: {
@@ -23,17 +26,19 @@ const CreativeGenerator = () => {
         body: JSON.stringify(formData),
       });
 
+      // Throw error if response is not OK
       if (!response.ok) {
         throw new Error('Failed to generate ad');
       }
 
+      // Parse JSON response
       const data = await response.json();
-      setGeneratedAd(data.adContent);
+      setGeneratedAd(data.adContent); 
     } catch (error) {
       console.error(error);
       setGeneratedAd('Error generating ad. Please try again.');
     } finally {
-      setLoading(false);
+      setLoading(false); 
     }
   };
 
@@ -42,6 +47,8 @@ const CreativeGenerator = () => {
       <h1 className="text-4xl font-extrabold text-gray-800 mb-8 text-center">
         AI-Powered Ad Creative Generator
       </h1>
+
+      {/* Form for user input */}
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-lg rounded-lg p-6 w-full max-w-3xl space-y-6"
@@ -61,6 +68,8 @@ const CreativeGenerator = () => {
             required
           />
         </div>
+
+        {/* Input field for ad description */}
         <div>
           <label htmlFor="description" className="block text-gray-700 font-semibold mb-2">
             Ad Description
@@ -76,6 +85,8 @@ const CreativeGenerator = () => {
             required
           ></textarea>
         </div>
+
+        {/* Input field for target audience */}
         <div>
           <label htmlFor="audience" className="block text-gray-700 font-semibold mb-2">
             Target Audience
@@ -91,6 +102,8 @@ const CreativeGenerator = () => {
             required
           />
         </div>
+
+        {/* Submit button */}
         <button
           type="submit"
           className={`w-full py-3 px-6 rounded-lg text-white font-semibold ${
@@ -101,6 +114,8 @@ const CreativeGenerator = () => {
           {loading ? 'Generating...' : 'Generate Ad'}
         </button>
       </form>
+
+      {/* Display generated ad if available */}
       {generatedAd && (
         <div className="mt-8 bg-white shadow-lg rounded-lg p-6 w-full max-w-3xl">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Generated Ad</h2>

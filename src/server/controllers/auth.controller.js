@@ -5,12 +5,32 @@ import jwt from "jsonwebtoken";
 
 export const signup = async (req, res, next) => {
     const { username, email, password } = req.body;
+
+    // Check if username is entered
+    if (!username) {
+        return res.status(400).json({ success: false, message: "Username is required" });
+    }
+
+    // Check if email is entered
+    if (!email) {
+        return res.status(400).json({ success: false, message: "Email is required" });
+    }
+
+    // Check if password is provided
+    if (!password) {
+        return res.status(400).json({ success: false, message: "Password is required" });
+    }
+
     const hashedPassword = bcryptjs.hashSync(password, 10);
     const newUser = new User({ username, email, password: hashedPassword });
     try {
         await newUser.save();
         res.status(201).json("User created successfully");
     } catch (error) {
+        if (error.code === 11000) {
+            // Duplicate key error
+            return res.status(400).json({ success: false, message: "An Account with This Username or Password Exists" });
+        }
         next(error);
     };
 };
@@ -20,6 +40,17 @@ export const signup = async (req, res, next) => {
 export const signin = async (req, res, next) => {
 
     const { email, password } = req.body;
+
+    // Check if email is provided
+    if (!email) {
+        return res.status(400).json({ success: false, message: "Email is required" });
+    }
+
+    // Check if password is provided
+    if (!password) {
+        return res.status(400).json({ success: false, message: "Password is required" });
+    }
+
     try {
 
         const validUser = await User.findOne({ email });
@@ -78,10 +109,10 @@ export const google = async (req, res, next) => {
 };
 
 export const signOut = async (req, res) => {
-   try {
-    res.clearCookie("access_token");
-    res.status(200).json("User has been logged out!");
-   } catch (error) {
-       next(error);
-   }
+    try {
+        res.clearCookie("access_token");
+        res.status(200).json("User has been logged out!");
+    } catch (error) {
+        next(error);
+    }
 }
