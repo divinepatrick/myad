@@ -1,5 +1,5 @@
 import React from "react";
-import { FaSearch } from "react-icons/fa";
+import { FiFileText } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import logo from "../assets/images/logo.png";
@@ -8,7 +8,7 @@ const Header = () => {
   const { currentUser } = useSelector((state) => state.user);
 
   return (
-    <header className="bg-white shadow-sm">
+    <header className="shadow-xs">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-4">
         <Link to="/">
           <img
@@ -17,52 +17,56 @@ const Header = () => {
             className="h-20 w-auto"
           />
         </Link>
-        <form className="bg-gray-100 p-2 rounded-full flex items-center">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="bg-transparent focus:outline-none w-24 sm:w-64 text-gray-700"
-          />
-          <FaSearch className="text-gray-500 ml-2" />
-        </form>
-        <ul className="flex gap-6 items-center">
-          {currentUser ? (
-            <>
-              <Link to="/creative">
-                <li className="text-gray-800 hover:text-blue-500 font-medium">
-                  Creative
-                </li>
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link to="/">
-                <li className="hidden sm:block text-gray-800 hover:text-blue-500 font-medium">
-                  Home
-                </li>
-              </Link>
-              <Link to="/about">
-                <li className="hidden sm:block text-gray-800 hover:text-blue-500 font-medium">
-                  About
-                </li>
-              </Link>
-            </>
-          )}
-          <Link to="/profile">
+        
+        
+          <ul className="flex flex-row text-menuTexts md:items-center justify-between p-6 rounded-3xl w-full max-w-80 md:max-w-200  bg-menuList shadow[0px_8px_20px_rgba(0,0,0,0.1)]">
             {currentUser ? (
-              <img
-                src={currentUser.avatar}
-                alt="avatar"
-                className="rounded-full h-8 w-8 object-cover border border-blue-500"
-              />
+              <>
+                <Link to="/creative">
+                  <li className=" hover:text-blue-500 font-medium">
+                    Creative
+                  </li>
+                </Link>
+              </>
             ) : (
-              <li className="text-gray-800 hover:text-green-500 font-medium">
-                Sign In
-              </li>
+              <>
+                <Link to="/">
+                  <li className="hidden sm:block hover:text-blue-500 font-medium">
+                    Home
+                  </li>
+                </Link>
+                <a href="/#emailSubjectGen">
+                  <li className="hidden sm:block hover:text-blue-500 font-medium cursor-pointer">
+                    Email SubLine
+                  </li>
+                </a>
+                <Link to="/about">
+                  <li className="hidden sm:block hover:text-blue-500 font-medium">
+                    About
+                  </li>
+                </Link>
+                <Link to="/other-tools">
+                  <li className="hidden sm:block hover:text-blue-500 font-medium">
+                    Other Tools
+                  </li>
+                </Link>
+              </>
             )}
-          </Link>
-        </ul>
-      </div>
+            <Link to="/profile">
+              {currentUser ? (
+                <img
+                  src={currentUser.avatar}
+                  alt="avatar"
+                  className="rounded-full h-8 w-8 object-cover border border-blue-500"
+                />
+              ) : (
+                <li className=" hover:text-green-500 font-medium">
+                  Sign In
+                </li>
+              )}
+            </Link>
+          </ul>
+        </div>
     </header>
   );
 };

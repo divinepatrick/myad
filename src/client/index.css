@@ -1,11 +1,44 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import 'tailwindcss';
+
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 body {
     @apply bg-gray-50 text-gray-800 antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: sans-serif, 'Noto Serif Display', 'Inter';
     line-height: 1.6;
     margin: 0;
     padding: 0;
+}
+
+
+@theme {
+    --color-menuList: #8d1eab;
+    --color-secondary: #ff680b;
+    --color-light: #ffffff;
+    --color-menuTexts: #ffffff;
+    --color-button: #8d1eab;
+    --color-buttonText: #ffffff;
+}
+
+.bg-custom-gradient {
+  background: linear-gradient(80deg, rgb(121, 95, 189) 0%, rgb(173, 73, 201) 50%, rgb(117, 44, 96) 100%);
 }

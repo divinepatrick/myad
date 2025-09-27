@@ -8,23 +8,29 @@ import Header from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
 import Creative from "./pages/Creative";
 import Footer from "./components/Footer";
+import OtherTools from "./pages/OtherTools";
 
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route element={<PrivateRoute />} >
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/creative" element={<Creative />} />
-        </Route >
-      </Routes>
-      <Footer />
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/other-tools" element={<OtherTools />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route element={<PrivateRoute />} >
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/creative" element={<Creative />} />
+            </Route >
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </BrowserRouter>
   )
 }

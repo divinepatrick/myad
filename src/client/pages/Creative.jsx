@@ -43,7 +43,7 @@ const CreativeGenerator = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-r from-blue-100 to-blue-50">
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-linear-to-r from-blue-100 to-blue-50">
       <h1 className="text-4xl font-extrabold text-gray-800 mb-8 text-center">
         AI-Powered Ad Creative Generator
       </h1>
@@ -62,7 +62,7 @@ const CreativeGenerator = () => {
             id="title"
             name="title"
             placeholder="Enter a catchy title..."
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 focus:outline-hidden"
             value={formData.title}
             onChange={handleChange}
             required
@@ -79,7 +79,7 @@ const CreativeGenerator = () => {
             name="description"
             rows="5"
             placeholder="Write a compelling description..."
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 focus:outline-hidden"
             value={formData.description}
             onChange={handleChange}
             required
@@ -96,7 +96,7 @@ const CreativeGenerator = () => {
             id="audience"
             name="audience"
             placeholder="Define your target audience..."
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 focus:outline-hidden"
             value={formData.audience}
             onChange={handleChange}
             required

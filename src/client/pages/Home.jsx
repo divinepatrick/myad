@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FiFileText } from "react-icons/fi";
 
 const Home = () => {
   const [query, setQuery] = useState('');
@@ -29,20 +30,28 @@ const Home = () => {
   return (
     <div>
       {/* Jumbotron Section */}
-      <section className="bg-blue-500 text-white py-20">
+      <section className="text-white flex items-center min-h-[calc(100vh-100px)] justify-center">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-4">Stop Guessing, Start Generating!</h1>
-          <p className="text-xl mb-8">Struggling with ad copy? Our AI generates high-performing ads instantly. Designed for all marketers, no matter their experience level.</p>
-          <button className="bg-white text-blue-500 font-semibold py-2 px-4 rounded">Learn More</button>
+          <h1 className="text-7xl font-bold mb-4 " style={{ fontFamily: "'Noto Serif Display', serif" }}>Start Creating Winning Ads!</h1>
+          <p className="text-xl mb-8 "><span>Struggling with ad copy? This Tool generates high-performing ads instantly.</span> 
+          <br />
+          <span>Designed for marketers at every level.</span> 
+          </p>
+          <div className="flex justify-center">
+          <button className="bg-button text-buttonText  text-xl py-2 px-4 border border-secondary rounded-2xl flex items-center gap-2">
+            <span>Create Ad</span>
+            <FiFileText size={22} />
+          </button>
+          </div>
         </div>
       </section>
 
 
 
-      {/* AI Search Section */}
-      <section className="py-20 bg-gray-100">
+      {/* Email Subject Line Maker Form */}
+      <section id="emailSubjectGen" className="py min-h-fit">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4">AI Marketing Search</h2>
+          <h2 className="text-4xl text-white font-bold mb-4">Email Subject Line Maker</h2>
           <form
             id="chat-form"
             className="flex flex-col sm:flex-row items-center justify-center mx-auto w-full sm:w-3/4 lg:w-2/3 px-10 py-6"
@@ -51,16 +60,16 @@ const Home = () => {
             <input
               id="user-input"
               type="search"
-              placeholder="Ask me anything..."
-              className="w-full sm:w-2/3 py-3 px-5 border rounded mb-4 sm:mb-0 sm:mr-4"
+              placeholder="Input your email content..."
+              className="w-full sm:w-2/3 py-3 px-5 border border-button placeholder-white rounded-2xl mb-4 sm:mb-0 sm:mr-4"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-5 rounded"
+              className="bg-button text-buttonText text-xl py-2 px-4 border border-secondary rounded-2xl flex items-center gap-2"
             >
-              Search
+              Create
             </button>
           </form>
           {response && (
@@ -75,24 +84,24 @@ const Home = () => {
       </section>
 
       {/* Vision Section */}
-      <section className="py-20">
+      <section className="py-20 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4">Our Vision</h2>
+          <h2 className="text-4xl font-bold mb-4">Vision</h2>
           <p className="text-lg mb-8">
-          Empowering individuals and businesses with cutting-edge AI tools to achieve their goals effortlessly.
+          Building Tools That truly Maximise Efforts.
           </p>
           <div className="flex justify-center">
             <div className="w-1/3 p-4">
-              <h3 className="text-2xl font-semibold mb-2">Innovation</h3>
-              <p>Pioneering new technologies to simplify and amplify your success.</p>
+              <h3 className="text-2xl font-semibold mb-2">Simplicity </h3>
+              <p>emphasizing intuitive design and seamless functionality.</p>
             </div>
             <div className="w-1/3 p-4">
-              <h3 className="text-2xl font-semibold mb-2">Integrity</h3>
-              <p>Building trust through transparency, honesty, and responsibility.</p>
+              <h3 className="text-2xl font-semibold mb-2">Flexibility </h3>
+              <p>Building tools that remain relevant and valuable over time.</p>
             </div>
             <div className="w-1/3 p-4">
-              <h3 className="text-2xl font-semibold mb-2">Excellence</h3>
-              <p>Delivering unparalleled quality and value in every interaction.</p>
+              <h3 className="text-2xl font-semibold mb-2">Efficiency</h3>
+              <p>Building to reduce manual effort and enabling users to focus on high-priority tasks.</p>
             </div>
           </div>
         </div>
