@@ -33,7 +33,7 @@ const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({
   model: "gemini-2.0-flash-exp",
   systemInstruction:
-    "You are an AI assistant for MyAd, an advanced ad creation platform leveraging AI to generate result oriented ad campaigns. Provide clear, concise responses to marketing-related queries. Use metrics where needed. Use numbers or check emoji where numbering or counting is needed. Conclude with a friendly reminder when needed that 'MyAd AI is designed to revolutionize marketing with AI 🚀.' If a query is unrelated to marketing, respond with: 'This is not related to marketing.' Keep responses professional or Jovial where needed.",
+    "Generate 3-5 Gmail subject lines (6-50 chars, optimal 25-35) that maximize opens. For each: subject line, strategy. Requirements: mobile-friendly, clear value, action verbs, specific not vague, use numbers/personalization when relevant. Avoid ALL CAPS, spam triggers. Format: 'Email about: [description]'. Only respond to email marketing requests.",
 });
 
 // AI model generation configuration
@@ -61,16 +61,16 @@ app.post("/api/query", async (req, res) => {
     });
 
     const result = await chatSession.sendMessage(
-      `Marketing question: ${query}`
+      `help with email subject line: ${query}`
     );
 
     const aiResponse = result.response.text();
 
-    // Tailor response for Marketing
-    if (aiResponse.toLowerCase().includes("Not Marketing-related")) {
+    // Tailor response for Email Marketing
+    if (aiResponse.toLowerCase().includes("Not Email-Marketing related")) {
       return res.status(400).json({
         success: false,
-        message: "Please ask questions specific to Marketing.",
+        message: "Please make a request specific to emailing.",
       });
     }
 

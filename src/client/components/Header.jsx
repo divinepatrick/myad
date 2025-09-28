@@ -8,8 +8,8 @@ const Header = () => {
   const { currentUser } = useSelector((state) => state.user);
 
   return (
-    <header className="shadow-xs">
-      <div className="flex justify-between items-center max-w-6xl mx-auto p-4">
+    <header className="shadow-xs ">
+      <div className="flex justify-between items-center max-w-sm md:max-w-6xl mx-auto p-4">
         <Link to="/">
           <img
             src={logo}
@@ -19,7 +19,7 @@ const Header = () => {
         </Link>
         
         
-          <ul className="flex flex-row text-menuTexts md:items-center justify-between p-6 rounded-3xl w-full max-w-80 md:max-w-200  bg-menuList shadow[0px_8px_20px_rgba(0,0,0,0.1)]">
+          <ul className="flex flex-col sm:flex-row text-menuTexts md:items-center justify-between p-6 rounded-3xl w-full max-w-sm sm:max-w-80 md:max-w-200  bg-menuList shadow[0px_8px_20px_rgba(0,0,0,0.1)]">
             {currentUser ? (
               <>
                 <Link to="/creative">

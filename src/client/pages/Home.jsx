@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FiFileText } from "react-icons/fi";
+import FormatAIResponse from '../components/FormatAIResponse';
 
 const Home = () => {
   const [query, setQuery] = useState('');
@@ -76,7 +77,7 @@ const Home = () => {
             <div className="mt-10 bg-white p-8 rounded-lg shadow-md w-full mx-auto">
               <h2 className="text-3xl font-bold mb-6">Response</h2>
               <div className="max-h-64 overflow-y-auto">
-              <pre className="whitespace-pre-wrap">{response}</pre>
+              <FormatAIResponse text={response} />
               </div>
             </div>
           )}
