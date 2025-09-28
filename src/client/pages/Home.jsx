@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FiFileText } from "react-icons/fi";
 import FormatAIResponse from '../components/FormatAIResponse';
 
 const Home = () => {
   const [query, setQuery] = useState('');
   const [response, setResponse] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +41,10 @@ const Home = () => {
           <span>Designed for marketers at every level.</span> 
           </p>
           <div className="flex justify-center">
-          <button className="bg-button text-buttonText  text-xl py-2 px-4 border border-secondary rounded-2xl flex items-center gap-2">
+          <button
+            className="bg-button text-buttonText  text-xl py-2 px-4 border border-secondary rounded-2xl flex items-center gap-2"
+            onClick={() => navigate('/signin')}
+          >
             <span>Create Ad</span>
             <FiFileText size={22} />
           </button>
